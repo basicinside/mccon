@@ -10,9 +10,13 @@ class Teleport
 								destination = command.split[1]
 
 								if !destination.nil?
-										@requests[destination] = player
-										MCCon.whisper(player, "Request send to #{destination}")
-										MCCon.whisper(destination, "Teleportrequest from #{player}. Type /accept to start teleport.")
+										if MCCon.isAdmin?(player)
+												MCCon.port(player , destination)
+										else
+												@requests[destination] = player
+												MCCon.whisper(player, "Request send to #{destination}")
+												MCCon.whisper(destination, "Teleportrequest from #{player}. Type /accept to start teleport.")
+										end
 								end
 						rescue Exception => f
 								puts "Fehler bei /port: #{f}"

@@ -86,6 +86,19 @@ class MCCon
 		def log(msg)
 				puts msg
 		end
-end
 
+		def MCCon.isAdmin?(player)
+				rt = false
+				begin
+						file = File.new("admins.txt", "r")
+						while (line = file.gets)
+								return true if line.strip == player
+						end
+						file.close
+				rescue Exception => f
+						return rt
+				end
+				return rt
+		end
+end
 $console = MCCon.new
