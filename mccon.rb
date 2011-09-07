@@ -6,11 +6,13 @@ require 'yaml'
 require './command'
 require './broadcast_receiver'
 require './plugins/logout_notifier'
+require './plugins/player_list'
+require './plugins/teleport'
 
 class MCCon
 		@@processServer = false
 
-				include BroadcastReceiver
+		include BroadcastReceiver
 		# Load the configuration file
 		# and start the Minecraft Server
 		def initialize
@@ -56,11 +58,20 @@ class MCCon
 				Thread.new do
 						begin
 								puts "processServer: #{@@processServer.inspect} #{cmd}"
-								@@processServer.puts cmd 
+								@@processServer.puts cmd + "\n"
+								@@processServer.flush
 						rescue Exception => e 
 								puts e
 						end
 				end
+		end
+
+		def MCCon.whisper(player, msg)
+				MCCon.sendCommand("tell #{player} #{msg}")
+		end
+
+		def MCCon.port(target, destination)
+				MCCon.sendCommand("tp #{target} #{destination}")
 		end
 
 

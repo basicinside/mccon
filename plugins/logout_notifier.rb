@@ -1,6 +1,6 @@
 class LogoutNotifier
 		include BroadcastReceiver
-		
+
 		def initialize
 				start_receiver
 				logout_notify = lambda do |player, reason|
@@ -11,3 +11,4 @@ class LogoutNotifier
 end
 
 LogoutNotifier.new
+

@@ -60,6 +60,7 @@ module BroadcastReceiver
 
 		# singleton accessor 
 		def BroadcastReceiver.send_event(event, *args)
+				puts "Event: #{event}"
 				@@receivers.each do |receiver|
 						receiver.do_event(event,*args)
 				end

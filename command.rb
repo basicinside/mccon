@@ -21,13 +21,12 @@ class Command
 								BroadcastReceiver.send_event(:logout, player, reason)
 						end
 
-						if out =~ /\[INFO\] \* /
-								puts "Emote: #{out}"
-						end
-
 						if out =~ /\[INFO\] .* tried command:/
 								d = out.scan(/\[INFO\] (.*) tried command: (.*)/) 
-								puts "Playercommand: #{d[0][1]} by #{d[0][0]}"
+								player = d[0][0]
+								command = d[0][1]
+								first = command.split[0]
+								BroadcastReceiver.send_event("custom_#{first}".to_sym, player, command)
 						end
 
 						if out =~ /kickme/
@@ -36,9 +35,6 @@ class Command
 				rescue Exception => f
 						puts "Fehler #{f}"
 				end
-		end
-
-		def Command.getPlayer(out)
 		end
 end
 
