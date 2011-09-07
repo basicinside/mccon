@@ -1,0 +1,5 @@
+Holarse Linuxgaming Minecraft Console
+
+- Event based console reaction
+- To add event receiver see plugins/logout_notifier.rb as example
+- To trigger events see command.rb as example
