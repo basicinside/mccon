@@ -1,13 +1,18 @@
 #!/usr/bin/env ruby
-#
-#
-#
+# MCCon 
+# Holarse Linuxgaming Minecraft Console Tool
+# written by Robin Kuck <robin@basicinside.de>
+
 require 'yaml'
 require './command'
 require './broadcast_receiver'
+
+# Load plugins
 require './plugins/logout_notifier'
 require './plugins/player_list'
 require './plugins/teleport'
+require './plugins/help'
+require './plugins/welcome'
 
 class MCCon
 		@@processServer = false
