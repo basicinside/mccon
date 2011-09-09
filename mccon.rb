@@ -13,6 +13,7 @@ require './plugins/player_list'
 require './plugins/teleport'
 require './plugins/help'
 require './plugins/welcome'
+require './plugins/mailbox'
 
 class MCCon
 		@@processServer = false
