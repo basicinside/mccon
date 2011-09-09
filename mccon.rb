@@ -14,6 +14,7 @@ require './plugins/teleport'
 require './plugins/help'
 require './plugins/welcome'
 require './plugins/mailbox'
+require './plugins/whitelist.rb'
 
 class MCCon
 		@@processServer = false
